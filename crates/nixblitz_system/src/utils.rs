@@ -26,9 +26,11 @@ use nixblitz_core::{
     errors::{PasswordError, ProjectError},
     system_platform::SystemPlatform,
 };
-use raw_cpuid::CpuId;
 use sha_crypt::{Sha512Params, sha512_simple};
 use std::io::ErrorKind;
+
+#[cfg(target_arch = "x86_64")]
+use raw_cpuid::CpuId;
 
 // default password: "nixblitz"
 pub(crate) static INITIAL_PASSWORD: &str = "$6$rounds=10000$moY2rIPxoNODYRxz$1DESwWYweHNkoB6zBxI3DUJwUfvA6UkZYskLOHQ9ulxItgg/hP5CRn2Fr4iQGO7FE16YpJAPMulrAuYJnRC9B.";
@@ -776,17 +778,18 @@ pub fn trim_lines_left(input: &str) -> String {
 /// A `SystemPlatform` enum variant indicating the platform detected at runtime.
 pub fn get_system_platform() -> SystemPlatform {
     // TODO: add support for other architectures
-    if cfg!(target_arch = "x86_64") {
+    #[cfg(target_arch = "x86_64")]
+    {
         let cpuid = CpuId::new();
-        match cpuid.get_feature_info() {
+        return match cpuid.get_feature_info() {
             Some(finfo) if finfo.has_hypervisor() => SystemPlatform::X86_64Vm,
             _ => SystemPlatform::X86_64BareMetal,
-        }
-    } else if cfg!(target_arch = "aarch64") {
-        SystemPlatform::Arm64
-    } else {
-        SystemPlatform::Unsupported
+        };
     }
+    #[cfg(target_arch = "aarch64")]
+    return SystemPlatform::Arm64;
+    #[cfg(not(any(target_arch = "x86_64", target_arch = "aarch64")))]
+    return SystemPlatform::Unsupported;
 }
 
 /// Checks for the availability of required system commands.
