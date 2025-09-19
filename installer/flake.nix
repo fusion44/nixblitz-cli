@@ -7,11 +7,11 @@
     # nixblitz.url = "..";
     nixblitz.inputs.nixpkgs.follows = "nixpkgs";
 
-    blitz-api.url = "github:fusion44/blitz_api/dev";
-    blitz-api.inputs.nixpkgs.follows = "nixpkgs";
+    # blitz-api.url = "github:fusion44/blitz_api/dev";
+    # blitz-api.inputs.nixpkgs.follows = "nixpkgs";
 
-    blitz-web.url = "github:fusion44/raspiblitz-web/master";
-    blitz-web.inputs.nixpkgs.follows = "nixpkgs";
+    # blitz-web.url = "github:fusion44/raspiblitz-web/master";
+    # blitz-web.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
 

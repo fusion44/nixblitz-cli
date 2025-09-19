@@ -24,7 +24,7 @@ in {
       inputs.nixblitz.outputs.packages.x86_64-linux.nixblitz-cli
       inputs.nixblitz.outputs.packages.x86_64-linux.nixblitz-docs
       inputs.nixblitz.outputs.packages.x86_64-linux.nixblitz-norupo
-      inputs.blitz-api.outputs.packages.x86_64-linux.default
+      # inputs.blitz-api.outputs.packages.x86_64-linux.default
       # inputs.blitz-web.outputs.packages.x86_64-linux.default
       bitcoind
       clightning

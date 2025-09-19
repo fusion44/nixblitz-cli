@@ -2,6 +2,8 @@
   pkgs,
   rustPlatform,
   basePath ? "",
+  wasm-bindgen-cli-flake,
+  dioxus-cli-flake,
 }: let
   manifest = (pkgs.lib.importTOML ./Cargo.toml).package;
   commitSha = "7e83399424af8a955ba86d83d6297bc2834add43";
@@ -41,15 +43,20 @@ in
     VERGEN_GIT_DIRTY = vergenGitDirty;
     SOURCE_DATE_EPOCH = vergenSourceDateEpoch;
 
-    nativeBuildInputs = with pkgs; [
-      rustPlatform.cargoSetupHook
-      pkg-config
-      cargo
-      rustc
-      dioxus-cli
-      wasm-bindgen-cli
-      lld
-    ];
+    nativeBuildInputs = with pkgs;
+      [
+        rustPlatform.cargoSetupHook
+        pkg-config
+        cargo
+        rustc
+        lld
+        binaryen
+        tailwindcss_4
+      ]
+      ++ [
+        wasm-bindgen-cli-flake.packages.${system}.wasm-bindgen-cli
+        dioxus-cli-flake.packages.${system}.dioxus-cli
+      ];
 
     buildInputs = [pkgs.openssl];
 
@@ -91,7 +98,7 @@ in
       echo "Current directory for build: $(pwd)"
 
       echo "Running 'dx bundle --platform web'"
-      dx bundle --platform web
+      dx bundle --web --release
 
       cd ..
 

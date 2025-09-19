@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "dioxus-cli-flake": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1758380780,
+        "narHash": "sha256-a57OvfxlT8hEZF9XA0YTeIzrHs2ZGWCzUEE723UPoWM=",
+        "ref": "main",
+        "rev": "e1264f34777166f0522b51fd51905aa01f18671a",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://forge.f44.fyi/f44/dioxus-cli-flake"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://forge.f44.fyi/f44/dioxus-cli-flake"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -18,13 +38,81 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1748929857,
-        "narHash": "sha256-lcZQ8RhsmhsK8u7LIFsJhsLh/pzR9yZ8yqpTzyGdj+Q=",
+        "lastModified": 1758198701,
+        "narHash": "sha256-7To75JlpekfUmdkUZewnT6MoBANS0XVypW6kjUOXQwc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c2a03962b8e24e669fb37b7df10e7c79531ff1a4",
+        "rev": "0147c2f1d54b30b5dd6d4a8c8542e8d7edf93b5d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1758198701,
+        "narHash": "sha256-7To75JlpekfUmdkUZewnT6MoBANS0XVypW6kjUOXQwc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0147c2f1d54b30b5dd6d4a8c8542e8d7edf93b5d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1758198701,
+        "narHash": "sha256-7To75JlpekfUmdkUZewnT6MoBANS0XVypW6kjUOXQwc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0147c2f1d54b30b5dd6d4a8c8542e8d7edf93b5d",
         "type": "github"
       },
       "original": {
@@ -36,8 +124,10 @@
     },
     "root": {
       "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "dioxus-cli-flake": "dioxus-cli-flake",
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs_2",
+        "wasm-bindgen-cli-flake": "wasm-bindgen-cli-flake"
       }
     },
     "systems": {
@@ -53,6 +143,56 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "wasm-bindgen-cli-flake": {
+      "inputs": {
+        "flake-utils": "flake-utils_3",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1758364533,
+        "narHash": "sha256-eWzBmGqiiBPKErPjT/JMvROJHFgw69Sutb9gHZBmLvo=",
+        "ref": "main",
+        "rev": "a2e2804792d74bef8e28b677f7b70fbb72b17530",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://forge.f44.fyi/f44/wasm-bindgen-cli-flake"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://forge.f44.fyi/f44/wasm-bindgen-cli-flake"
       }
     }
   },

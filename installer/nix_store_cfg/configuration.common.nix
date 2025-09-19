@@ -89,21 +89,21 @@ in {
   };
 
   services = {
-    blitz-api = {
-      enable = true;
-      nginx = {
-        enable = true;
-      };
-    };
+    # blitz-api = {
+    #   enable = false;
+    #   nginx = {
+    #     enable = true;
+    #   };
+    # };
+    #
+    # blitz-web = {
+    #   enable = true;
+    #   nginx = {
+    #     enable = false;
+    #   };
+    # };
 
-    blitz-web = {
-      enable = true;
-      nginx = {
-        enable = false;
-      };
-    };
-
-    nixblitz-cli.enable = true;
+    # nixblitz-cli.enable = true;
     # nixblitz-norupo.enable = true;
     # nixblitz-docs.enable = true;
     bitcoind = {

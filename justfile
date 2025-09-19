@@ -90,11 +90,11 @@ run-system-engine:
 
 # serve the norupo Web UI
 run-norupo:
-  cd {{rust_src}}/nixblitz_norupo; $env.NIXBLITZ_WORK_DIR = '{{work_dir}}'; $env.RUST_BACKTRACE = 1; $env.RUST_LOG = "debug"; dx serve --platform web
+  cd {{rust_src}}/nixblitz_norupo; $env.NIXBLITZ_WORK_DIR = '{{work_dir}}'; $env.RUST_BACKTRACE = 1; $env.RUST_LOG = "debug"; dx serve --web
 
 # run the tailwind CSS dev server
 run-tailwind:
-  tailwindcss -o ./crates/nixblitz_norupo/assets/tailwind.css --watch
+  cd {{rust_src}}/nixblitz_norupo; tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
 
 # shorthand for rsync this source directory to a remote node.
 rsync target:

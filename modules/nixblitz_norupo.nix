@@ -1,4 +1,8 @@
 {
+  wasm-bindgen-cli-flake,
+  dioxus-cli-flake,
+  ...
+}: {
   config,
   pkgs,
   lib,
@@ -39,6 +43,8 @@
 
   appPackage = pkgs.callPackage ../crates/nixblitz_norupo/default.nix {
     basePath = dioxusTomlValueForBasePath;
+    inherit wasm-bindgen-cli-flake;
+    inherit dioxus-cli-flake;
   };
 in {
   options = {
@@ -155,7 +161,7 @@ in {
           NIXBLITZ_WORK_DIR = cfg.dataDir;
         };
         serviceConfig = {
-          ExecStart = "${cfg.package}/bin/server";
+          ExecStart = "${cfg.package}/bin/nixblitz_norupo";
           User = cfg.server.user;
           Group = cfg.server.group;
           Restart = "always";
