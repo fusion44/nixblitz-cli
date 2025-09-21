@@ -16,7 +16,6 @@
     dioxus-cli-flake,
   }: let
     cli_name = "nixblitz-cli";
-    docs_name = "nixblitz-docs";
     install_engine_name = "nixblitz-install-engine";
     system_engine_name = "nixblitz-system-engine";
     webapp_name = "nixblitz-norupo";
@@ -25,10 +24,6 @@
       nixosModules = {
         ${cli_name} = {...}: {
           imports = [./modules/nixblitz_cli.nix];
-          nixpkgs.overlays = [self.overlays.default];
-        };
-        ${docs_name} = {...}: {
-          imports = [./modules/nixblitz_docs.nix];
           nixpkgs.overlays = [self.overlays.default];
         };
         ${install_engine_name} = {...}: {
@@ -55,7 +50,6 @@
     overlays.overlays = {
       default = final: prev: {
         ${cli_name} = self.packages.${prev.stdenv.hostPlatform.system}.${cli_name};
-        ${docs_name} = self.packages.${prev.stdenv.hostPlatform.system}.${docs_name};
         ${webapp_name} = self.packages.${prev.stdenv.hostPlatform.system}.${webapp_name};
         ${install_engine_name} = self.packages.${prev.stdenv.hostPlatform.system}.${install_engine_name};
         ${system_engine_name} = self.packages.${prev.stdenv.hostPlatform.system}.${system_engine_name};
@@ -68,7 +62,6 @@
     in {
       packages = {
         ${cli_name} = pkgs.callPackage ./crates/nixblitz_cli/default.nix {};
-        ${docs_name} = pkgs.callPackage ./docs/default.nix {};
         ${webapp_name} = pkgs.callPackage ./crates/nixblitz_norupo/default.nix {
           inherit wasm-bindgen-cli-flake;
           inherit dioxus-cli-flake;
@@ -124,11 +117,6 @@
               watchman
               websocat
               binaryen
-
-              # for the docs
-              nodePackages.pnpm
-              yarn
-              eslint_d
             ]
             ++ [
               wasm-bindgen-cli-flake.packages.${system}.wasm-bindgen-cli

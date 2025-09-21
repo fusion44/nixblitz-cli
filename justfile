@@ -116,122 +116,18 @@ rsync target:
       print $"Syncing ($remote.key)"
       let data2 = $remote.value
       let cmd = $data2.user + "@" + $data2.host + ":" + $data2.path
-      rsync -rvz --exclude .git --exclude docs/ --exclude crates/target/ . $cmd
+      rsync -rvz --exclude .git --exclude crates/target/ . $cmd
     }
     exit 0
   } else {
     print $"Syncing {{target}}"
     let $data = $data | get {{target}}
     let cmd = $data.user + "@" + $data.host + ":" + $data.path
-    rsync -rvz -e $'ssh -p ($data.port) -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no' --exclude nixblitz-disk.qcow2 --exclude .git --exclude docs/ --exclude crates/target/ . $cmd
+    rsync -rvz -e $'ssh -p ($data.port) -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no' --exclude nixblitz-disk.qcow2 --exclude .git --exclude crates/target/ . $cmd
   }
-
-build-installer verbosity="normal":
-  #!/usr/bin/env nu
-  let has_untracked_files = (
-    try {
-        git status --porcelain=v1 | lines | where { |it| $it | str starts-with "?? crates" } | is-not-empty
-    } catch {
-        # If git status fails, assume there might be issues (treat as "changes found")
-        true
-    }
-  )
-
-  if $has_untracked_files {
-    # Nix builds the CLI and runs tests, but skips untracked git files,
-    # causing potential build failures if templates are missing.
-    print -e $"\e[33m\u{26A0} Warning: You have unstaged changes or untracked files. Build and tests may fail.\e[0m"
-  }
-
-  if ("{{verbosity}}" == "verbose") {
-    print "Building installer ISO image with verbosity level '{{verbosity}}'"
-    (
-      nix build
-        -L
-        --no-update-lock-file
-        --show-trace
-        './installer#nixosConfigurations.nixblitzx86installer.config.system.build.isoImage'
-    )
-  } else {
-    print "Building installer ISO image with verbosity level '{{verbosity}}'"
-    (
-      nix build
-        --no-update-lock-file
-        './installer#nixosConfigurations.nixblitzx86installer.config.system.build.isoImage'
-    )
-  }
-
-run-installer-vm target='default':
-  #!/usr/bin/env nu
-  if not ('result/iso' | path exists) {
-    print "Iso file not found. Run 'just build-installer' first."
-    exit 1
-  }
-
-  let iso_name = ls result/iso | first | get name
-
-  if not ('nixblitz-disk.qcow2' | path exists) {
-    try {
-      print "Enter the size of the image in GB:"
-      let res = input | into int
-      print $"Creating image file 'nixblitz-disk.qcow2' with ($res)G."
-      qemu-img create -f qcow2 nixblitz-disk.qcow2 $'($res)G'
-    } catch {
-      print "Input must be a number."
-      exit 1
-    }
-  }
-
-  if ("{{target}}" == "default" or "{{target}}" == "single") {
-    print "Running installer VM with a single virtio disk"
-    (qemu-system-x86_64 -enable-kvm -m 16384 -smp 4
-      -netdev user,id=mynet0,hostfwd=tcp::10022-:22,hostfwd=tcp::8080-:80
-      -device virtio-net-pci,netdev=mynet0
-      -drive file=nixblitz-disk.qcow2,if=none,id=virtio0,format=qcow2
-      -device virtio-blk-pci,drive=virtio0
-      -cdrom $iso_name)
-  } else if ("{{target}}" == "dual") {
-    print "Running installer with a local disk and usb attached disk"
-  } else {
-    print "Unknown target '{{target}}'. Valid targets are 'default', 'single' and 'dual'."
-  }
-
-ssh-installer-vm:
-  ssh -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no nixos@localhost -p 10022
-
-ssh-installed-vm:
-  ssh -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no admin@localhost -p 10022
 
 # Build all crates
 nix-build-all:
   #!/usr/bin/env bash
   nix build .#nixblitz-cli
   nix build .#nixblitz-norupo
-  nix build .#nixblitz-docs
-
-run-installed-vm:
-  #!/usr/bin/env bash
-  nu installer/tools/run_vm.nu
-
-# Serve the documentation locally
-docs-serve:
-  #!/usr/bin/env bash
-  cd docs && npm start
-
-# Build the documentation files
-docs-build:
-  #!/usr/bin/env bash
-  cd docs && npm run build
-
-# Update all documentation
-docs-update-all:
-  #!/usr/bin/env bash
-  cd docs
-  npm update
-  yarn upgrade
-
-# Format the markdown files
-docs-format:
-  #!/usr/bin/env bash
-  cd docs
-  prettier -w .

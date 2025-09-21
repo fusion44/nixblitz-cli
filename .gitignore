@@ -6,11 +6,6 @@
 
 .remotes.json
 
-result
-
 crates/nixblitz_cli/target
 crates/nixblitz_web/target
 crates/target
-
-*qcow2*
-*OVMF*
