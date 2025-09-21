@@ -230,17 +230,18 @@
         "wasm-bindgen-cli-flake": "wasm-bindgen-cli-flake"
       },
       "locked": {
-        "lastModified": 1758439177,
-        "narHash": "sha256-JdxRxPpvqI2/vwAkdUlSR0eadoZZ6IIgn4Ep6NqVWjs=",
-        "ref": "refs/heads/main",
-        "rev": "99eda49857a74a0bdd22dfc4ac01c8dfabed492f",
-        "revCount": 215,
-        "type": "git",
-        "url": "https://forge.f44.fyi/f44/nixblitz"
+        "lastModified": 1758447433,
+        "narHash": "sha256-paHEn1UkOzneYDp1hQpPZucRqbLlb6rPygzyUAZAwqI=",
+        "owner": "fusion44",
+        "repo": "nixblitz",
+        "rev": "4d7bb3826b3e3272537119c15ea5880a646ca818",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://forge.f44.fyi/f44/nixblitz"
+        "owner": "fusion44",
+        "ref": "main",
+        "repo": "nixblitz",
+        "type": "github"
       }
     },
     "nixos-hardware": {
