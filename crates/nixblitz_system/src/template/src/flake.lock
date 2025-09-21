@@ -45,26 +45,6 @@
         "type": "github"
       }
     },
-    "dioxus-cli-flake": {
-      "inputs": {
-        "flake-utils": "flake-utils_5",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1758380780,
-        "narHash": "sha256-a57OvfxlT8hEZF9XA0YTeIzrHs2ZGWCzUEE723UPoWM=",
-        "ref": "main",
-        "rev": "e1264f34777166f0522b51fd51905aa01f18671a",
-        "revCount": 1,
-        "type": "git",
-        "url": "https://forge.f44.fyi/f44/dioxus-cli-flake"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://forge.f44.fyi/f44/dioxus-cli-flake"
-      }
-    },
     "extra-container": {
       "inputs": {
         "flake-utils": [
@@ -181,42 +161,6 @@
         "type": "github"
       }
     },
-    "flake-utils_6": {
-      "inputs": {
-        "systems": "systems_7"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_7": {
-      "inputs": {
-        "systems": "systems_8"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "home-mgr": {
       "inputs": {
         "nixpkgs": [
@@ -318,25 +262,24 @@
     },
     "nixblitz": {
       "inputs": {
-        "dioxus-cli-flake": "dioxus-cli-flake",
-        "flake-utils": "flake-utils_6",
+        "flake-utils": "flake-utils_5",
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "wasm-bindgen-cli-flake": "wasm-bindgen-cli-flake"
+        ]
       },
       "locked": {
-        "lastModified": 1758439177,
-        "narHash": "sha256-JdxRxPpvqI2/vwAkdUlSR0eadoZZ6IIgn4Ep6NqVWjs=",
-        "ref": "refs/heads/main",
-        "rev": "99eda49857a74a0bdd22dfc4ac01c8dfabed492f",
-        "revCount": 215,
-        "type": "git",
-        "url": "https://forge.f44.fyi/f44/nixblitz"
+        "lastModified": 1758292585,
+        "narHash": "sha256-DhUZI6ZS1f46m57RJo8/ai/HPw/3vJzM2o3bHW3czSs=",
+        "owner": "fusion44",
+        "repo": "nixblitz",
+        "rev": "bf38b969752d875807e6cf1b3e5353752e57a193",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://forge.f44.fyi/f44/nixblitz"
+        "owner": "fusion44",
+        "ref": "main",
+        "repo": "nixblitz",
+        "type": "github"
       }
     },
     "nixos-hardware": {
@@ -382,38 +325,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1758198701,
-        "narHash": "sha256-7To75JlpekfUmdkUZewnT6MoBANS0XVypW6kjUOXQwc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0147c2f1d54b30b5dd6d4a8c8542e8d7edf93b5d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1758198701,
-        "narHash": "sha256-7To75JlpekfUmdkUZewnT6MoBANS0XVypW6kjUOXQwc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0147c2f1d54b30b5dd6d4a8c8542e8d7edf93b5d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -481,7 +392,7 @@
         "nix-bitcoin": "nix-bitcoin",
         "nixblitz": "nixblitz",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs",
         "raspberry-pi-nix": "raspberry-pi-nix"
       }
     },
@@ -694,36 +605,6 @@
         "type": "github"
       }
     },
-    "systems_7": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_8": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
@@ -744,26 +625,6 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
-      }
-    },
-    "wasm-bindgen-cli-flake": {
-      "inputs": {
-        "flake-utils": "flake-utils_7",
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1758364533,
-        "narHash": "sha256-eWzBmGqiiBPKErPjT/JMvROJHFgw69Sutb9gHZBmLvo=",
-        "ref": "main",
-        "rev": "a2e2804792d74bef8e28b677f7b70fbb72b17530",
-        "revCount": 1,
-        "type": "git",
-        "url": "https://forge.f44.fyi/f44/wasm-bindgen-cli-flake"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://forge.f44.fyi/f44/wasm-bindgen-cli-flake"
       }
     }
   },
