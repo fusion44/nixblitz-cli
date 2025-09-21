@@ -2,8 +2,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # nixblitz.url = "github:fusion44/nixblitz/main";
-    nixblitz.url = "git+https://forge.f44.fyi/f44/nixblitz";
+    nixblitz.url = "github:fusion44/nixblitz/main";
+    # nixblitz.url = "git+https://forge.f44.fyi/f44/nixblitz";
     # nixblitz.url = "..";
     nixblitz.inputs.nixpkgs.follows = "nixpkgs";
 

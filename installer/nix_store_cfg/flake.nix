@@ -10,8 +10,8 @@
     # blitz-web.url = "github:raspiblitz/raspiblitz-web/master";
     # blitz-web.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixblitz.url = "git+https://forge.f44.fyi/f44/nixblitz";
-    # nixblitz.url = "github:fusion44/nixblitz/main";
+    nixblitz.url = "github:fusion44/nixblitz/main";
+    # nixblitz.url = "git+https://forge.f44.fyi/f44/nixblitz";
     # nixblitz.url = "../..";
     nixblitz.inputs.nixpkgs.follows = "nixpkgs";
 
