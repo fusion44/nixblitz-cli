@@ -67,3 +67,55 @@ Similar to the System Engine, the Install Engine is also a Rust-based web server
 
 **Cfg / Nix OS**
 This component represents the core NixOS configuration and the underlying operating system itself. It is the target for all system-level operations and configurations initiated by the Install Engine and System Engine. The `nixblitz_system` crate provides the low-level functionality for interacting with this part of the system, including managing Nix configurations and gathering system information.
+
+### Disk Layout
+Only one disk layout is supported at the moment:
+```mermaid
+%%{
+  init: {
+    "theme": "base",
+    "themeVariables": {
+      "lineColor": "#666"
+    },
+    "fontFamily": "sans-serif"
+  },
+  "flowchart": {
+    "htmlLabels": true
+  }
+}%%
+
+graph TD;
+    classDef diskoNode stroke-width:2px
+
+    subgraph "disk: main"
+        A["GPT Partition Table"]
+    end
+
+    subgraph "Partitions"
+        B["MBR (1M)<br/><i>Type: EF02 (BIOS Boot)</i>"]
+        C["ESP (500M)<br/><i>Format: vfat</i>"]
+        D["system (20G)<br/><i>Format: ext4</i>"]
+        E["data (20G)<br/><i>Format: ext4</i>"]
+        F["blockchain (100%)<br/><i>Format: ext4</i>"]
+    end
+
+    subgraph "Mount Points"
+        C1["/boot"]
+        D1["/<br/><i><br/>(NixOS system)</i>"]
+        E1["/mnt/data<br/><i><br/>(important data that **must** be backed up)</i>"]
+        F1["/mnt/blockchain<br/><i><br/>(data that can be recreated (blockchain, elects, etc.)</i>"]
+    end
+
+    class A,B,C,D,E,F,C1,D1,E1,F1 diskoNode
+
+    A --> B;
+    A --> C;
+    A --> D;
+    A --> E;
+    A --> F;
+
+    C --> C1;
+    D --> D1;
+    E --> E1;
+    F --> F1;
+```

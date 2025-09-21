@@ -1,6 +1,6 @@
 {
   pkgs ? import <nixpkgs> {},
-  url ? "https://docs.f44.fyi",
+  url ? "https://fusion44.github.com/nixblitz",
   baseUrl ? "/",
 }:
 pkgs.buildNpmPackage {
@@ -35,7 +35,7 @@ pkgs.buildNpmPackage {
 
   meta = {
     description = "NixBlitz Documentation Site";
-    homepage = "https://docs.f44.fyi";
+    homepage = "https://fusion44.github.com/nixblitz";
     license = "MIT";
   };
 }
