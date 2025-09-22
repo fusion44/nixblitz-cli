@@ -6,6 +6,11 @@
 
 .remotes.json
 
+crates/target
 crates/nixblitz_cli/target
 crates/nixblitz_web/target
-crates/target
+
+result
+crates/result
+crates/nixblitz_cli/result
+crates/nixblitz_norupo/result

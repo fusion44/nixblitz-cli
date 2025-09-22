@@ -129,6 +129,6 @@ in
       homepage = manifest.homepage or "https://github.com/fusion44/nixblitz";
       license = pkgs.lib.licenses.mit;
       maintainers = ["fusion44"];
-      mainProgram = "server";
+      mainProgram = "nixblitz_norupo";
     };
   }
