@@ -6,7 +6,7 @@
   dioxus-cli-flake,
 }: let
   manifest = (pkgs.lib.importTOML ./Cargo.toml).package;
-  commitSha = "4d7bb3826b3e3272537119c15ea5880a646ca818";
+  commitSha = "18405ff94d41a6db163685b600d4ecacf1f12f3a";
   shortSha = builtins.substring 0 7 commitSha;
 
   # for local development
@@ -15,7 +15,7 @@
   src = pkgs.fetchgit {
     url = "https://forge.f44.fyi/f44/nixblitz";
     rev = commitSha;
-    sha256 = "sha256-paHEn1UkOzneYDp1hQpPZucRqbLlb6rPygzyUAZAwqI=";
+    sha256 = "sha256-v/OL7ksacyUVjey96AjKaprBIOyxXM5vqRbvogGkox0=";
   };
 
   # src = fetchFromGitHub {
