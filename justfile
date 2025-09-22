@@ -23,10 +23,10 @@ update-default-nix:
   #!/usr/bin/env nu
   nu ./scripts/update-default-nix.nu
 
-  gum confirm "Commit changes?"
-  git add crates/nixblitz_cli/default.nix crates/nixblitz_norupo/default.nix
-  git commit -m "chore: update hashes"
-  git push f44 main
+  # gum confirm "Commit changes?"
+  # git add crates/nixblitz_cli/default.nix crates/nixblitz_norupo/default.nix
+  # git commit -m "chore: update hashes"
+  # git push f44 main
 
 update-flake-locks mode="nixblitz":
   #!/usr/bin/env nu

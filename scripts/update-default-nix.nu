@@ -24,7 +24,18 @@ def main [
         # Use the provided commit_sha or get the latest one from the local git repository.
         let new_commit_sha = if ($commit_sha | is-empty) {
             print "INFO: No commit SHA provided, using latest from git."
-            git rev-parse HEAD | str trim
+            let has_git = (which git | is-not-empty) and (".git" | path exists)
+            let has_jj = (which jj | is-not-empty) and (".jj" | path exists)
+            if $has_git {
+                print "INFO: Git repository detected. Using 'git rev-parse HEAD'."
+                git rev-parse HEAD | str trim
+            } else if $has_jj {
+                print "INFO: Jujutsu repository detected. Using 'jj log'."
+                jj log -r @- -T "commit_id" --no-graph | str trim
+            } else {
+                print "ERROR: No commit SHA provided and could not find a .git or .jj repository."
+                exit 1
+            }
         } else {
             $commit_sha
         }
