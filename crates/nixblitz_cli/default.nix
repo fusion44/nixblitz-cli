@@ -1,29 +1,25 @@
 # default.nix
-{pkgs ? import <nixpkgs> {}}: let
+{
+  pkgs ? import <nixpkgs> {},
+  rev ? null,
+  shortRev ? null,
+}: let
+  jjHelpers = import ../../scripts/jj_helpers.nix {inherit (pkgs) lib;};
+  src = ../../.;
+
+  commitSha =
+    if rev != null
+    then rev
+    else jjHelpers.commitIdFromRepo {repoRoot = src;};
+
+  shortSha =
+    if shortRev != null
+    then shortRev
+    else builtins.substring 0 7 commitSha;
+
   manifest = (pkgs.lib.importTOML ./Cargo.toml).package;
-  commitSha = "18405ff94d41a6db163685b600d4ecacf1f12f3a";
-  shortSha = builtins.substring 0 7 commitSha;
-  # src = ../../.;
-
-  src = pkgs.fetchgit {
-    url = "https://forge.f44.fyi/f44/nixblitz";
-    rev = commitSha;
-    sha256 = "sha256-v/OL7ksacyUVjey96AjKaprBIOyxXM5vqRbvogGkox0=";
-  };
-
-  # src = pkgs.fetchFromGitHub {
-  #   owner = "fusion44";
-  #   repo = "nixblitz";
-  #   rev = commitSha;
-  #   sha256 = "";
-  # };
-
   crateSource = src + "/crates";
-  vergenGitSha = commitSha;
   vergenGitDescribe = "${shortSha}-nix";
-  vergenGitDirty = "false";
-
-  vergenSourceDateEpoch = "0";
 in
   pkgs.rustPlatform.buildRustPackage {
     pname = "nixblitz";
@@ -31,10 +27,8 @@ in
     src = crateSource;
     cargoLock.lockFile = crateSource + "/Cargo.lock";
 
-    VERGEN_GIT_SHA = vergenGitSha;
+    VERGEN_GIT_SHA = commitSha;
     VERGEN_GIT_DESCRIBE = vergenGitDescribe;
-    VERGEN_GIT_DIRTY = vergenGitDirty;
-    SOURCE_DATE_EPOCH = vergenSourceDateEpoch;
 
     buildPhase = ''
       runHook preBuild

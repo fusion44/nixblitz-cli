@@ -59,9 +59,17 @@
     systems = flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {inherit system;};
       mainPkg = self.packages.${system}.${cli_name};
+      revArgs =
+        pkgs.lib.optionalAttrs (self ? rev && self.rev != null)
+        {inherit (self) rev;};
+      shortRevArgs =
+        pkgs.lib.optionalAttrs (self ? shortRev && self.shortRev != null)
+        {inherit (self) shortRev;};
     in {
       packages = {
-        ${cli_name} = pkgs.callPackage ./crates/nixblitz_cli/default.nix {};
+        ${cli_name} =
+          pkgs.callPackage ./crates/nixblitz_cli/default.nix
+          (revArgs // shortRevArgs);
         ${webapp_name} = pkgs.callPackage ./crates/nixblitz_norupo/default.nix {
           inherit wasm-bindgen-cli-flake;
           inherit dioxus-cli-flake;

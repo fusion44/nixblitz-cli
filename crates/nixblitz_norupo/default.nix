@@ -5,32 +5,14 @@
   wasm-bindgen-cli-flake,
   dioxus-cli-flake,
 }: let
+  jjHelpers = import ../../scripts/jj_helpers.nix {inherit (pkgs) lib;};
+  src = ../../.;
+  commitSha = jjHelpers.commitIdFromRepo {repoRoot = src;};
   manifest = (pkgs.lib.importTOML ./Cargo.toml).package;
-  commitSha = "18405ff94d41a6db163685b600d4ecacf1f12f3a";
   shortSha = builtins.substring 0 7 commitSha;
 
-  # for local development
-  # src = ./..;
-
-  src = pkgs.fetchgit {
-    url = "https://forge.f44.fyi/f44/nixblitz";
-    rev = commitSha;
-    sha256 = "sha256-v/OL7ksacyUVjey96AjKaprBIOyxXM5vqRbvogGkox0=";
-  };
-
-  # src = fetchFromGitHub {
-  #   owner = "fusion44";
-  #   repo = "nixblitz";
-  #   rev = "1bc9027bdc32a8b7228c9dbcd707acf860163e67";
-  #   sha256 = "sha256-ag6wM9C+lj/m6zeEp0W0inRWMgAm5dgbejsqKK9OXVE=";
-  # };
-
   crateSource = src + "/crates";
-  vergenGitSha = commitSha;
   vergenGitDescribe = "${shortSha}-nix";
-  vergenGitDirty = "false";
-
-  vergenSourceDateEpoch = "0";
 in
   rustPlatform.buildRustPackage {
     pname = "nixblitz-norupo";
@@ -38,10 +20,8 @@ in
     src = crateSource;
     cargoLock.lockFile = crateSource + "/Cargo.lock";
 
-    VERGEN_GIT_SHA = vergenGitSha;
+    VERGEN_GIT_SHA = commitSha;
     VERGEN_GIT_DESCRIBE = vergenGitDescribe;
-    VERGEN_GIT_DIRTY = vergenGitDirty;
-    SOURCE_DATE_EPOCH = vergenSourceDateEpoch;
 
     nativeBuildInputs = with pkgs;
       [
