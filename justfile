@@ -19,12 +19,25 @@ format:
   cd {{rust_src}}; cargo fmt
   dx fmt
 
+# run cargo audit
+audit:
+  cd {{rust_src}}; cargo audit
+
+update-all:
+  #!/usr/bin/env nu
+  cd {{rust_src}}
+  print $"Updating rust deps ..."
+  cargo update
+  cd ..
+  just update-flake-locks all
+
+
 update-flake-locks mode="nixblitz":
   #!/usr/bin/env nu
   fd flake.lock | lines | path dirname | each { |d|
     cd $d
     print $"Updating flakes in ($d)"
-    let cmd = if ("{{mode}}" == "full") {
+    let cmd = if ("{{mode}}" == "all") {
       nix flake update
     } else if ("{{mode}}" == "nixblitz") {
       nix flake update nixblitz

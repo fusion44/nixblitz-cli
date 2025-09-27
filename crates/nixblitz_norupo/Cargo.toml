@@ -11,7 +11,7 @@ edition = "2024"
 nixblitz_core = { workspace = true }
 nixblitz_system = { workspace = true, optional = true }
 dioxus = { version = "0.7.0-rc.0", features = ["router", "fullstack"] }
-dioxus-logger = "0.6.2"
+dioxus-logger = "0.7.0-rc.0"
 error-stack = "0.5.0"
 web-sys = { version = "0.3.77", features = ["console"] }
 gloo-net = "0.6.0"
