@@ -29,6 +29,6 @@ pub use net_address_popup::{NetAddressPopup, NetAddressPopupResult};
 pub use number_popup::{NumberPopup, NumberPopupResult};
 pub use password_input_popup::{PasswordInputMode, PasswordInputPopup, PasswordInputResult};
 pub use popup::Popup;
-pub use spinner::{Spinner, SpinnerSpeed, SpinnerStyle};
+pub use spinner::{Spinner, SpinnerStyle};
 pub use text_input_popup::{TextInputPopup, TextInputPopupResult};
 pub use utils::{NavDirection, get_selected_char, navigate_selection};

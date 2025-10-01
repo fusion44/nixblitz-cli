@@ -25,10 +25,9 @@ pub fn PreInstallConfirm(
                 kind: KeyEventKind::Press,
                 ..
             }) = event
+                && confirmed.get()
             {
-                if confirmed.get() {
-                    on_confirm(true);
-                }
+                on_confirm(true);
             }
         }
     });

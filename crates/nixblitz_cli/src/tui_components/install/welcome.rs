@@ -18,10 +18,9 @@ pub fn Welcome(props: &mut WelcomeProps, hooks: &mut Hooks) -> impl Into<AnyElem
                 kind: KeyEventKind::Press,
                 ..
             }) = event
+                && let Some(cb) = on_click.as_deref_mut()
             {
-                if let Some(cb) = on_click.as_deref_mut() {
-                    cb(());
-                }
+                cb(());
             }
         }
     });

@@ -279,11 +279,11 @@ fn spawn_connection_task(
 
         let outgoing_loop = async {
             while let Some(command) = rx.next().await {
-                if let Ok(payload) = serde_json::to_string(&command) {
-                    if ws_writer.send(Message::Text(payload)).await.is_err() {
-                        // This error means the connection is closed.
-                        break;
-                    }
+                if let Ok(payload) = serde_json::to_string(&command)
+                    && ws_writer.send(Message::Text(payload)).await.is_err()
+                {
+                    // This error means the connection is closed.
+                    break;
                 }
             }
         };

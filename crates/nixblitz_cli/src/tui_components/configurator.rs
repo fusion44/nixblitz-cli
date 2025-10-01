@@ -1,7 +1,7 @@
 use std::sync::{Arc, Mutex};
 
 use iocraft::prelude::*;
-use log::{error, info, warn};
+use log::{error, warn};
 use nixblitz_core::{
     OPTION_TITLES, SupportedApps,
     bool_data::BoolOptionChangeData,
@@ -108,26 +108,25 @@ pub fn Configurator(
                 kind,
                 ..
             }) = event
+                && kind != KeyEventKind::Release
             {
-                if kind != KeyEventKind::Release {
-                    match code {
-                        KeyCode::Tab => on_app_selected(false),
-                        KeyCode::BackTab => on_app_selected(true),
-                        KeyCode::Char('q') => should_exit.set(true),
-                        KeyCode::Char('a') if modifiers == KeyModifiers::CONTROL => {
-                            if let Some(handler) = &mut on_submit {
-                                handler(());
-                            }
+                match code {
+                    KeyCode::Tab => on_app_selected(false),
+                    KeyCode::BackTab => on_app_selected(true),
+                    KeyCode::Char('q') => should_exit.set(true),
+                    KeyCode::Char('a') if modifiers == KeyModifiers::CONTROL => {
+                        if let Some(handler) = &mut on_submit {
+                            handler(());
                         }
-                        KeyCode::Char('?') => {
-                            if !show_help.get() {
-                                show_help.set(true)
-                            } else {
-                                show_help.set(false)
-                            }
-                        }
-                        _ => {}
                     }
+                    KeyCode::Char('?') => {
+                        if !show_help.get() {
+                            show_help.set(true)
+                        } else {
+                            show_help.set(false)
+                        }
+                    }
+                    _ => {}
                 }
             }
         }

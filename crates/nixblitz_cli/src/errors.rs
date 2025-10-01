@@ -10,30 +10,14 @@ pub enum CliError {
     Unknown,
     #[error("{}", .0)]
     GenericError(String),
-    #[error("{}", .0)]
-    IoError(String),
     #[error("Unable to start the TUI")]
     UnableToStartTui,
     #[error("Unable to initialize the Project struct")]
     UnableToInitProjectStruct,
-    #[error("Invalid argument provided")]
-    ArgumentError,
-    #[error("JSON parse error")]
-    JsonParseError,
-    #[error("Error while running command: {}\nError: {}", .0,.1 )]
-    CommandError(String, String),
-    #[error("Error while installing the system: {}", .0)]
-    InstallExecutionFailed(String),
-    #[error("Lock operation error: {}", .0)]
-    LockError(String),
-    #[error("User aborted")]
-    UserAbort,
     #[error("Unable to set option '{}' of app {} to '{}'", .0, .1, .2 )]
     OptionSetError(String, String, String),
     #[error("Unsupported app/option combination '{}' / '{}'", .0, .1)]
     OptionUnsupportedError(String, String),
-    #[error("Unable to reach the installer engine")]
-    InstallerEngineUnreachable,
 }
 
 pub fn init_error_handlers() {

@@ -1,5 +1,4 @@
 use iocraft::prelude::*;
-use log::info;
 
 use crate::tui_components::{CustomTextInput, Popup};
 

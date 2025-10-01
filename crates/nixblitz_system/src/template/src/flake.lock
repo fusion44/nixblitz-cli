@@ -224,11 +224,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758928860,
-        "narHash": "sha256-ZqaRdd+KoR54dNJPtd7UX4O0X+02YItnTpQVu28lSVI=",
+        "lastModified": 1759261733,
+        "narHash": "sha256-G104PUPKBgJmcu4NWs0LUaPpSOTD4jiq4mamLWu3Oc0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bc2afee55bc5d3b825287829d6592b9cc1405aad",
+        "rev": "5a21f4819ee1be645f46d6b255d49f4271ef6723",
         "type": "github"
       },
       "original": {
@@ -326,47 +326,26 @@
         "wasm-bindgen-cli-flake": "wasm-bindgen-cli-flake"
       },
       "locked": {
-        "lastModified": 1758902886,
-        "narHash": "sha256-L+V8C4U4Dw61a6lBXpPO9BydxM15dUlXTogdC8hNq0E=",
+        "lastModified": 1758987305,
+        "narHash": "sha256-WD/sBp5vNxVDlgVMWTVAvlL+R6xALwWTXEiVTI6eaLU=",
         "ref": "refs/heads/main",
-        "rev": "4c5e00d74d5c49918d7fedff0b3260836521ab6d",
-        "revCount": 224,
+        "rev": "51810396f9d032af1ccd1bf0b64dfef42d082e21",
+        "revCount": 226,
         "type": "git",
         "url": "https://forge.f44.fyi/f44/nixblitz-cli"
       },
       "original": {
         "type": "git",
         "url": "https://forge.f44.fyi/f44/nixblitz-cli"
-      }
-    },
-    "nixblitz-docs": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1758477783,
-        "narHash": "sha256-JXqIM3b/37WFL6O8eH/GLY1j4e4gEz1Xc+WSLKSef0A=",
-        "owner": "fusion44",
-        "repo": "nixblitz-docs",
-        "rev": "5ac1b7f14c2601403a3240d37b6ff0f073fb85f4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fusion44",
-        "ref": "main",
-        "repo": "nixblitz-docs",
-        "type": "github"
       }
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1758663926,
-        "narHash": "sha256-6CFdj7Xs616t1W4jLDH7IohAAvl5Dyib3qEv/Uqw1rk=",
+        "lastModified": 1759261527,
+        "narHash": "sha256-wPd5oGvBBpUEzMF0kWnXge0WITNsITx/aGI9qLHgJ4g=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "170ff93c860b2a9868ed1e1102d4e52cb3d934e1",
+        "rev": "e087756cf4abbe1a34f3544c480fc1034d68742f",
         "type": "github"
       },
       "original": {
@@ -425,11 +404,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1758690382,
-        "narHash": "sha256-NY3kSorgqE5LMm1LqNwGne3ZLMF2/ILgLpFr1fS4X3o=",
+        "lastModified": 1759036355,
+        "narHash": "sha256-0m27AKv6ka+q270dw48KflE0LwQYrO7Fm4/2//KCVWg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e643668fd71b949c53f8626614b21ff71a07379d",
+        "rev": "e9f00bd893984bc8ce46c895c3bf7cac95331127",
         "type": "github"
       },
       "original": {
@@ -501,7 +480,6 @@
         "home-mgr": "home-mgr",
         "nix-bitcoin": "nix-bitcoin",
         "nixblitz": "nixblitz",
-        "nixblitz-docs": "nixblitz-docs",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "raspberry-pi-nix": "raspberry-pi-nix"
@@ -774,11 +752,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1758364533,
-        "narHash": "sha256-eWzBmGqiiBPKErPjT/JMvROJHFgw69Sutb9gHZBmLvo=",
+        "lastModified": 1758970288,
+        "narHash": "sha256-bVinawp7LaSxfcRdL7pvwIaDdbjIjVzHK6cJ7e4rM1k=",
         "ref": "main",
-        "rev": "a2e2804792d74bef8e28b677f7b70fbb72b17530",
-        "revCount": 1,
+        "rev": "f5e772e6021f5b09d8edaa1f7395497667c64876",
+        "revCount": 2,
         "type": "git",
         "url": "https://forge.f44.fyi/f44/wasm-bindgen-cli-flake"
       },

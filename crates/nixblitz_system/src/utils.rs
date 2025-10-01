@@ -781,10 +781,10 @@ pub fn get_system_platform() -> SystemPlatform {
     #[cfg(target_arch = "x86_64")]
     {
         let cpuid = CpuId::new();
-        return match cpuid.get_feature_info() {
+        match cpuid.get_feature_info() {
             Some(finfo) if finfo.has_hypervisor() => SystemPlatform::X86_64Vm,
             _ => SystemPlatform::X86_64BareMetal,
-        };
+        }
     }
     #[cfg(target_arch = "aarch64")]
     return SystemPlatform::Arm64;

@@ -133,10 +133,11 @@ pub fn get_disk_info() -> Result<Vec<DiskInfo>, CommandError> {
             let mut mount_points = Vec::new();
             if let Some(mounts) = device["mountpoints"].as_array() {
                 for mount in mounts {
-                    if let Some(mount_str) = mount.as_str() {
-                        if !mount_str.is_empty() && mount_str != "null" {
-                            mount_points.push(mount_str.to_string());
-                        }
+                    if let Some(mount_str) = mount.as_str()
+                        && !mount_str.is_empty()
+                        && mount_str != "null"
+                    {
+                        mount_points.push(mount_str.to_string());
                     }
                 }
             }

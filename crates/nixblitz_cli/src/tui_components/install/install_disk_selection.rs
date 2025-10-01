@@ -41,10 +41,10 @@ pub fn InstallDiskSelection(
                         selected_index.set(new_value);
                     }
                     KeyCode::Enter => {
-                        if let Some(cb) = &mut on_select {
-                            if let Some(disk) = disks.get(*selected_index.read()) {
-                                cb(disk.path.clone());
-                            }
+                        if let Some(cb) = &mut on_select
+                            && let Some(disk) = disks.get(*selected_index.read())
+                        {
+                            cb(disk.path.clone());
                         }
                     }
                     _ => {}

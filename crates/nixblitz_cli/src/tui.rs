@@ -11,16 +11,14 @@ use crossterm::{
 };
 use error_stack::{Result, ResultExt};
 use iocraft::prelude::*;
-use log::{error, info, warn};
 use nixblitz_core::{SystemClientCommand, SystemState};
-use nixblitz_system::project::Project;
 use tokio::sync::{oneshot, watch};
 
 use crate::tui_components::utils::{get_focus_border_color, load_or_create_project};
 use crate::{
     errors::CliError,
     tui_components::{EngineOffHelpPopup, LogViewer, Popup, Spinner, configurator::Configurator},
-    tui_shared::{ConnectionStatus, Focus, PopupData, PopupDataState, ShowPopupState},
+    tui_shared::{ConnectionStatus, PopupData, PopupDataState, ShowPopupState},
     tui_system_ws_utils::{TuiSystemEngineConnection, connect_and_manage, get_ws_url},
 };
 
@@ -196,7 +194,6 @@ fn App(mut hooks: Hooks) -> impl Into<AnyElement<'static>> {
                 },
                 focused,
             ),
-            _ => None,
         }
     } else {
         None

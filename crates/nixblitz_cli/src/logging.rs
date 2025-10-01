@@ -49,11 +49,11 @@ pub fn init_logging(cli: &Cli) {
     let mut log_to_file = false;
     if !log_file.as_os_str().is_empty() {
         log_to_file = true;
-        if let Some(parent) = log_file.parent() {
-            if !parent.exists() {
-                std::fs::create_dir_all(parent)
-                    .unwrap_or_else(|_| panic!("Failed to create log directory: {:?}", parent));
-            }
+        if let Some(parent) = log_file.parent()
+            && !parent.exists()
+        {
+            std::fs::create_dir_all(parent)
+                .unwrap_or_else(|_| panic!("Failed to create log directory: {:?}", parent));
         }
     }
 

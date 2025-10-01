@@ -15,8 +15,8 @@
     nixblitz.url = "git+https://forge.f44.fyi/f44/nixblitz-cli";
     nixblitz.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixblitz-docs.url = "github:fusion44/nixblitz-docs/main";
-    nixblitz-docs.inputs.nixpkgs.follows = "nixpkgs";
+    # nixblitz-docs.url = "github:fusion44/nixblitz-docs/main";
+    # nixblitz-docs.inputs.nixpkgs.follows = "nixpkgs";
 
     home-mgr.url = "github:nix-community/home-manager";
     home-mgr.inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +34,7 @@
     blitz-api,
     blitz-web,
     nixblitz,
-    nixblitz-docs,
+    # nixblitz-docs,
     home-mgr,
     nixos-hardware,
     raspberry-pi-nix,
@@ -49,7 +49,7 @@
       nixblitz.nixosModules.nixblitz-cli
       nixblitz.nixosModules.nixblitz-norupo
       nixblitz.nixosModules.nixblitz-system-engine
-      nixblitz-docs.nixosModules.nixblitz-docs
+      # nixblitz-docs.nixosModules.nixblitz-docs
     ];
   in {
     nixosConfigurations = {

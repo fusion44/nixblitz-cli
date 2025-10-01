@@ -4,6 +4,7 @@ use iocraft::prelude::*;
 use tokio::time;
 
 /// Defines the visual style of the spinner animation.
+#[allow(dead_code)]
 #[derive(Default, Copy, Clone, Debug, PartialEq, Eq)]
 pub enum SpinnerStyle {
     #[default]
@@ -17,6 +18,7 @@ pub enum SpinnerStyle {
 }
 
 /// Defines the animation speed for the spinner.
+#[allow(dead_code)]
 #[derive(Default, Copy, Clone, Debug, PartialEq, Eq)]
 pub enum SpinnerSpeed {
     Slow,

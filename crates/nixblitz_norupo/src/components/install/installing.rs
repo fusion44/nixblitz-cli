@@ -1,4 +1,4 @@
-use dioxus::{document::eval, prelude::*};
+use dioxus::prelude::*;
 use nixblitz_core::DiskoInstallStep;
 
 use crate::{classes::typography, components::InstallStepRow};
@@ -11,7 +11,7 @@ pub fn Installing(
 ) -> Element {
     use_effect(move || {
         let _ = logs.read();
-        let mut eval = document::eval(
+        let eval = document::eval(
             r#"
                 const logView = document.getElementById('log-view');
                 if (logView) {

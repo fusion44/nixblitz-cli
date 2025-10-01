@@ -179,53 +179,53 @@ pub fn SelectableList(
                 return;
             }
 
-            if let TerminalEvent::Key(KeyEvent { code, kind, .. }) = event {
-                if kind != KeyEventKind::Release {
-                    match code {
-                        KeyCode::Char('j') | KeyCode::Down => {
-                            let res = navigate_selection(
-                                NavDirection::Next,
-                                selected.get(),
-                                offset.get(),
-                                num_items,
-                                max_num_list_items,
-                            );
-                            offset.set(res.offset);
-                            selected.set(res.selected);
-                        }
-                        KeyCode::Char('k') | KeyCode::Up => {
-                            let res = navigate_selection(
-                                NavDirection::Previous,
-                                selected.get(),
-                                offset.get(),
-                                num_items,
-                                max_num_list_items,
-                            );
-                            offset.set(res.offset);
-                            selected.set(res.selected);
-                        }
-                        KeyCode::Enter => {
-                            let selection_value = match &data {
-                                SelectableListData::Options(options) => {
-                                    if let Some(option) = options.get(selected.get()) {
-                                        SelectionValue::OptionId(option.id().clone())
-                                    } else {
-                                        error!("Invalid option index: {}", selected.get());
-                                        return;
-                                    }
-                                }
-                                SelectableListData::StringListItems(_) => {
-                                    SelectionValue::Index(selected.get())
-                                }
-                            };
-                            on_selected(Some(selection_value));
-                        }
-                        KeyCode::Esc => {
-                            // Cancel
-                            on_selected(None);
-                        }
-                        _ => {}
+            if let TerminalEvent::Key(KeyEvent { code, kind, .. }) = event
+                && kind != KeyEventKind::Release
+            {
+                match code {
+                    KeyCode::Char('j') | KeyCode::Down => {
+                        let res = navigate_selection(
+                            NavDirection::Next,
+                            selected.get(),
+                            offset.get(),
+                            num_items,
+                            max_num_list_items,
+                        );
+                        offset.set(res.offset);
+                        selected.set(res.selected);
                     }
+                    KeyCode::Char('k') | KeyCode::Up => {
+                        let res = navigate_selection(
+                            NavDirection::Previous,
+                            selected.get(),
+                            offset.get(),
+                            num_items,
+                            max_num_list_items,
+                        );
+                        offset.set(res.offset);
+                        selected.set(res.selected);
+                    }
+                    KeyCode::Enter => {
+                        let selection_value = match &data {
+                            SelectableListData::Options(options) => {
+                                if let Some(option) = options.get(selected.get()) {
+                                    SelectionValue::OptionId(option.id().clone())
+                                } else {
+                                    error!("Invalid option index: {}", selected.get());
+                                    return;
+                                }
+                            }
+                            SelectableListData::StringListItems(_) => {
+                                SelectionValue::Index(selected.get())
+                            }
+                        };
+                        on_selected(Some(selection_value));
+                    }
+                    KeyCode::Esc => {
+                        // Cancel
+                        on_selected(None);
+                    }
+                    _ => {}
                 }
             }
         }

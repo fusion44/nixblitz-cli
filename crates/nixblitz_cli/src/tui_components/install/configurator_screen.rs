@@ -21,16 +21,15 @@ pub fn ConfiguratorScreen(
                 kind,
                 ..
             }) = event
+                && kind != KeyEventKind::Release
             {
-                if kind != KeyEventKind::Release {
-                    match code {
-                        KeyCode::Char('a') if modifiers == KeyModifiers::CONTROL => {
-                            if let Some(handler) = &mut on_submit {
-                                handler(());
-                            }
+                match code {
+                    KeyCode::Char('a') if modifiers == KeyModifiers::CONTROL => {
+                        if let Some(handler) = &mut on_submit {
+                            handler(());
                         }
-                        _ => {}
                     }
+                    _ => {}
                 }
             }
         }

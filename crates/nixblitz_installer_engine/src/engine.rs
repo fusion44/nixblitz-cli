@@ -337,7 +337,10 @@ async fn real_install_process(
                 NixBaseConfigOption::DiskoDevice.to_option_id(),
                 disk.clone(),
             ));
-        p.on_option_changed(change_notification);
+        match p.on_option_changed(change_notification) {
+            Ok(_) => {}
+            Err(error) => error!("Failed to apply option change: {}", error),
+        }
     }
 
     let res = commit_config(work_dir.as_str(), "install system").await;

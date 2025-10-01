@@ -1,5 +1,4 @@
 use iocraft::prelude::*;
-use log::info;
 use nixblitz_core::{DiskoInstallStep, DiskoStepStatus};
 
 use crate::tui_components::Popup;
